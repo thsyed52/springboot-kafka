@@ -1,0 +1,17 @@
+with zookeeper
+
+bin/zookeeper-server-start.sh config/zookeeper.properties
+bin/kafka-server-start.sh config/server.properties
+
+without zookeeper
+
+# generate a new cluster id
+./bin/kafka-storage.sh random-uuid
+
+6oqPDEQ0RZO6_Q3v6A7jdw
+
+#formatting
+./bin/kafka-storage.sh format --standalone -t $ (cluster id obtained above)  -c config/kraft/server.properties
+
+# start kafka
+./bin/kafka-server-start.sh config/kraft/server.properties
